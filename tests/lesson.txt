@@ -1,0 +1,36 @@
+import pytest
+
+@pytest.mark.parametrize('browser, user',
+                         [
+                             ('firefox', 1),
+                          ('Chrome', 2)
+                          ], ids=['Firefox with first user',
+                                  'Crome with second user']
+                         )
+def test_with_param(browser, user):
+    pass
+
+@pytest.mark.parametrize('browser', ['Crome', 'Firefox'])
+@pytest.mark.parametrize('user', [1, 2], ids=['First user', 'Second user'])
+def test_with_param_again(browser, user):
+    pass
+
+@pytest.mark.parametrize('browser, user',
+                         [
+                            pytest.param ('firefox', 1, id='Firefox with first user',
+                                          marks=[pytest.mark.xfail()]),
+                            pytest.param ('Chrome', 2, id='Crome with second user')
+                          ]
+                         )
+def test_with_param_two(browser, user):
+    pass
+
+@pytest.fixture(params=['Chrome', 'Firexox'])
+def browser(request):
+    return request.param
+
+def test_with_parametrised_fixture(browser):
+    pass
+
+def test_with_parametrised_fixture_only_chrome(browser):
+    pass
