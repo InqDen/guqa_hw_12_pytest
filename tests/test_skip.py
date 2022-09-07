@@ -1,5 +1,6 @@
 import pytest
 from selene.support.shared import browser
+from data import open_site
 
 
 @pytest.fixture(params=[(1280, 1024), (1024, 768), (420, 768), (320, 768)])
