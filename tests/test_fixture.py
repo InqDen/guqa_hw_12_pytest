@@ -1,7 +1,7 @@
 import pytest
 from selene.support.shared import browser
 from selene import command
-from data import open_site
+from tests.data import open_site
 
 
 @pytest.fixture(scope='function')
@@ -23,4 +23,5 @@ def test_github_desktop(browser_desktop):
 
 
 def test_github_mobile(browser_mobile):
-    open_site.browser.element('.btn-mktg').perform(command.js.click)    #не всегда видит элемент, крутим JS
+    browser.open('https://github.com/')
+    browser.element('.btn-mktg').click()
