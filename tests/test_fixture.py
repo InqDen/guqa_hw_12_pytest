@@ -1,7 +1,6 @@
 import pytest
 from selene.support.shared import browser
-from selene import command
-from tests.data import open_site
+
 
 
 @pytest.fixture(scope='function')
@@ -19,7 +18,8 @@ def browser_desktop():
 
 
 def test_github_desktop(browser_desktop):
-    open_site.element('.btn-mktg').click()
+    browser.open('https://github.com/')
+    browser.element('.btn-mktg').click()
 
 
 def test_github_mobile(browser_mobile):

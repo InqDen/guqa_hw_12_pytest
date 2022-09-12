@@ -1,6 +1,5 @@
 import pytest
 from selene.support.shared import browser
-from tests.data import open_site
 
 chrome = pytest.fixture(params=[(1000, 900), (1500, 1200), (900, 500)])
 
@@ -23,11 +22,9 @@ def browser_config(browser_size):
 def test_github_desktop(browser_size):
     browser.open('https://github.com/')
     browser.element('.btn-mktg').click()
-    #open_site.element('.btn-mktg').click()
 
 
 @pytest.mark.parametrize("browser_size", [(310, 516)], indirect=True)
 def test_github_mobile(browser_size):
     browser.open('https://github.com/')
     browser.element('.btn-mktg').click()
-    #open_site.element('.btn-mktg').click()
